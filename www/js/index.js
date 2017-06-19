@@ -105,6 +105,7 @@ function carregaTelaLogin(){
       "</div>"+
 "</div>"
     );
+    $("#barraux").addClass("barraux-hide");
 }
 
 function submit(username, password, key){
@@ -229,7 +230,7 @@ function telaAtuadores(){
                            
                         "</div>"
         );
-    
+    $("#barraux").removeClass("barraux-hide");
 }
 
 

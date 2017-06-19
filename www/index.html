@@ -56,20 +56,6 @@
             <nav class="grey darken-4">
                 <div class="nav-wrapper container">
                   <a href="#" class="brand-logo"><i class="material-icons left">home</i>Casinha</a>
-                  <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
-                  <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true"><i class="material-icons left">date_range</i>{{ request.user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
-                  </ul>
-                  <ul id="menu-mobile" class="side-nav">
-                    
-        
-                    <li><a href="#!"><i class="material-icons left">date_range</i>Dias (Semana)</a></li>
-                    <li><a href="#" onclick="segd()">Segunda - Almoço</a></li>
-                    <li class="arriba"><a href="#" onclick="segn()">Segunda - Janta</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#" onclick="sair()">Sair</a></li>
-                  </ul>
-
                 </div>
             </nav>
             </div>
@@ -85,128 +71,20 @@
                   </div>
                 </div>
               </div>
-
-                  <!--
-                  <span class="black-text">
-                  
-                    <h4>Atuadores</h4>
-                    <hr>
-                  </span>
-
-                  <ul class="collection">
-                    <li class="collection-item avatar">
-                        <div class="container">
-                            <div class="col s7">
-                                <i class="material-icons circle" id="icon12">
-                                  
-                                    wb_incandescent
-                                  
-                                  </i>
-                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
-                                  <p><span class="truncate">Sala de estar </span>
-                                     <span class="truncate"><b>Tópico:</b> luz1</span>
-                                  </p>
-                            </div>
-                            <div class="col s5">
-                                
-      
-                                <div class="switch">
-                                    <label>
-                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
-                                      <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                      
-                    </li>
-                    <li class="collection-item avatar">
-                        <div class="container">
-                            <div class="col s7">
-                                <i class="material-icons circle" id="icon12">
-                                  
-                                    wb_incandescent
-                                  
-                                  </i>
-                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
-                                  <p><span class="truncate">Sala de estar </span>
-                                     <span class="truncate"><b>Tópico:</b> luz1</span>
-                                  </p>
-                            </div>
-                            <div class="col s5">
-
-                                <div class="switch">
-                                    <label>
-                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
-                                      <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                      
-                    </li>
-                    
-                    <li class="collection-item avatar">
-                        <div class="container">
-                            <div class="col s7">
-                                <i class="material-icons circle" id="icon12">
-                                  
-                                    wb_incandescent
-                                  
-                                  </i>
-                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
-                                  <p><span class="truncate">Sala de estar </span>
-                                     <span class="truncate"><b>Tópico:</b> luz1</span>
-                                  </p>
-                            </div>
-                            <div class="col s5">
-                                
-                                <div class="switch">
-                                    <label>
-                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
-                                      <span class="lever"></span>
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                      
-                      
-                    </li>
-
-                  
-                             
-                  </ul>
-
-                  -->
-              </div>
-              
             </div>
               
-              <div class="fixed-action-btn horizontal" style="bottom: 15px; right: 15px;">
-                <a class="btn-floating btn-large red">
+            </div>              
+              <div class="fixed-action-btn toolbar" id="barraux" style="bottom: 15px; right: 15px;">
+                <a class="btn-floating btn-large grey darken-4">
                   <i class="large material-icons">mode_edit</i>
                 </a>
-                <ul>
-                  
-                   <li><a class="btn-floating black" onclick="logout();" href="#!"><i class="material-icons">exit_to_app</i></a></li>
-                    <li><a class="btn-floating green"  href=""><i class="material-icons">refresh</i></a></li>
-                    <li><a class="btn-floating green" href="#modalOn"><i class="material-icons">cloud</i></a></li>
-                    <li><a class="btn-floating green" href="#modalMessage"><i class="material-icons">sms</i></a></li>
-
-                  
+                <ul>                  
+                   <li><a class="waves-effect waves-light" onclick="logout();" href="#!"><i class="material-icons">exit_to_app</i></a></li>
+                    <li><a class="waves-effect waves-light"  href=""><i class="material-icons">refresh</i></a></li>
+                    <li><a class="waves-effect waves-light" href="#modalOn"><i class="material-icons">cloud</i></a></li>
+                    <li><a class="waves-effect waves-light" href="#modalMessage"><i class="material-icons">sms</i></a></li>
                 </ul>
               </div>
-            <div id="modalDev" class="modal">
-                <div class="modal-content">
-                    <h4>Desenvolvedor:</h4>
-                    <div class="col l12">
-                        <p>Diego Fernando</p>
-                        <p><a href="http://fb.com/difernandosl">http://fb.com/difernandosl</a></p>
-                    </div>
-                </div>
-            </div>
             <!-- Modal Structure -->
             <div id="modalOn" class="modal bottom-sheet">
               <div class="modal-content">
