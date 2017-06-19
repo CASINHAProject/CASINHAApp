@@ -111,7 +111,7 @@ function carregaTelaLogin(){
 function submit(username, password, key){
 
     $.ajax({
-            url : "http://192.168.0.101:8000/api/", // the endpoint
+            url : "http://casinhaproject.herokuapp.com/api/", // the endpoint
             type : "POST", // http method
             async : false,
             data : { 
@@ -154,7 +154,7 @@ function uploc(){
     console.log("Foi ao uploc");
     console.log("lat:"+lat);
     $.ajax({
-            url : "http://192.168.0.101:8000/api/localization/", // the endpoint
+            url : "http://casinhaproject.herokuapp.com/api/localization/", // the endpoint
             type : "POST", // http method
             async : false,
             data : { 
