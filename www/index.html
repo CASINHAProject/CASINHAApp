@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+
+    <title>CASINHA</title>
+</head>
+
+<body onload="onDeviceReady()">
+    
+    <div class="content app">
+        <div id="deviceready" class="blink">
+            <ul id="dropdown1" class="dropdown-content left">
+                <li><a href="/logout/">Sair</a></li>
+                <li class="divider"></li>
+                <li><a href="#modalExcluir">Excluir conta</a></li>
+            </ul>
+            <div class="navbar-fixed">
+            <nav class="grey darken-4">
+                <div class="nav-wrapper container">
+                  <a href="#" class="brand-logo"><i class="material-icons left">home</i>Casinha</a>
+                  <a href="#" data-activates="menu-mobile" class="button-collapse left"><i class="material-icons left">menu</i></a>
+                  <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown1" data-beloworigin="true"><i class="material-icons left">date_range</i>{{ request.user.username }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                  </ul>
+                  <ul id="menu-mobile" class="side-nav">
+                    
+        
+                    <li><a href="#!"><i class="material-icons left">date_range</i>Dias (Semana)</a></li>
+                    <li><a href="#" onclick="segd()">Segunda - Almoço</a></li>
+                    <li class="arriba"><a href="#" onclick="segn()">Segunda - Janta</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#" onclick="sair()">Sair</a></li>
+                  </ul>
+
+                </div>
+            </nav>
+            </div>
+            <div class="row workScreen">
+               <div class="preloader-wrapper big active loader">
+                <div class="spinner-layer spinner-green-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+
+                  <!--
+                  <span class="black-text">
+                  
+                    <h4>Atuadores</h4>
+                    <hr>
+                  </span>
+
+                  <ul class="collection">
+                    <li class="collection-item avatar">
+                        <div class="container">
+                            <div class="col s7">
+                                <i class="material-icons circle" id="icon12">
+                                  
+                                    wb_incandescent
+                                  
+                                  </i>
+                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
+                                  <p><span class="truncate">Sala de estar </span>
+                                     <span class="truncate"><b>Tópico:</b> luz1</span>
+                                  </p>
+                            </div>
+                            <div class="col s5">
+                                
+      
+                                <div class="switch">
+                                    <label>
+                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
+                                      <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                      
+                      
+                    </li>
+                    <li class="collection-item avatar">
+                        <div class="container">
+                            <div class="col s7">
+                                <i class="material-icons circle" id="icon12">
+                                  
+                                    wb_incandescent
+                                  
+                                  </i>
+                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
+                                  <p><span class="truncate">Sala de estar </span>
+                                     <span class="truncate"><b>Tópico:</b> luz1</span>
+                                  </p>
+                            </div>
+                            <div class="col s5">
+
+                                <div class="switch">
+                                    <label>
+                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
+                                      <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                      
+                      
+                    </li>
+                    
+                    <li class="collection-item avatar">
+                        <div class="container">
+                            <div class="col s7">
+                                <i class="material-icons circle" id="icon12">
+                                  
+                                    wb_incandescent
+                                  
+                                  </i>
+                                  <span class="title truncate"><b>Lâmpada 1º andar</b></span>
+                                  <p><span class="truncate">Sala de estar </span>
+                                     <span class="truncate"><b>Tópico:</b> luz1</span>
+                                  </p>
+                            </div>
+                            <div class="col s5">
+                                
+                                <div class="switch">
+                                    <label>
+                                      <input id="element12" onclick="alterCheck('Lâmpada 1º andar', 12, 'luz1');" type="checkbox">
+                                      <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                      
+                      
+                    </li>
+
+                  
+                             
+                  </ul>
+
+                  -->
+              </div>
+              
+            </div>
+              
+              <div class="fixed-action-btn horizontal" style="bottom: 15px; right: 15px;">
+                <a class="btn-floating btn-large red">
+                  <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                  
+                   <li><a class="btn-floating black" onclick="logout();" href="#!"><i class="material-icons">exit_to_app</i></a></li>
+                    <li><a class="btn-floating green"  href=""><i class="material-icons">refresh</i></a></li>
+                    <li><a class="btn-floating green" href="#modalOn"><i class="material-icons">cloud</i></a></li>
+                    <li><a class="btn-floating green" href="#modalMessage"><i class="material-icons">sms</i></a></li>
+
+                  
+                </ul>
+              </div>
+            <div id="modalDev" class="modal">
+                <div class="modal-content">
+                    <h4>Desenvolvedor:</h4>
+                    <div class="col l12">
+                        <p>Diego Fernando</p>
+                        <p><a href="http://fb.com/difernandosl">http://fb.com/difernandosl</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal Structure -->
+            <div id="modalOn" class="modal bottom-sheet">
+              <div class="modal-content">
+              <h4>Criar tópico</h4>
+              <div class="row">
+            
+              <div class="row">
+                <div class="input-field col s12">
+                  <input placeholder="Ex.:corredor/luz" id="topic" type="text" class="validate">
+                  <label for="topic">Tópico</label>
+                </div>
+                <div class="input-field col s12">
+                  <input placeholder="Ex.:on" id="textt" type="text" class="validate">
+                  <label for="topic">Conteúdo da mensagem</label>
+                </div>
+             </div>
+            </div>
+            <div class="container center-align">
+              <a class="waves-effect waves-light btn green" onclick="addTopic(topic.value, textt.value);" href="#!">Publicar</a>
+              <a class="modal-action modal-close waves-effect waves-light btn black" href="#!">Fechar</a>
+            </div>
+          </div>
+            </div>
+              <div id="modalMessage" class="modal bottom-sheet">
+              <div class="modal-content">
+                <h4>Criar mensagem no ambiente</h4>
+                <div class="row">
+              
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="message" class="materialize-textarea"></textarea>
+                    <label for="message">Mensagem</label>
+                  </div>
+               </div>
+              </div>
+              <div class="container center-align">
+                <a class="modal-action modal-close waves-effect waves-light btn green" onclick="addMessage();" href="#!">Adicionar</a>
+                <a class="modal-action modal-close waves-effect waves-light btn black" href="#!">Fechar</a>
+              </div>
+              <div class="container center-align">
+                
+              </div>
+            </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/aux.js"></script>
+    <script type="text/javascript" src="js/paho.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+
+        
+        app.initialize();
+        $(".button-collapse").sideNav();
+        $(".dropdown-button").dropdown({ hover: false });
+        $('.modal').modal();
+
+    </script>
+</body>
+
+</html>
