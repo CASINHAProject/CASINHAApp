@@ -288,7 +288,6 @@ function listAc(){
         l+= "</div>";
         l+= "</li>";
     }
-    console.log(l);
     return l;
 }
 
@@ -370,13 +369,6 @@ function onConnect() {
         message.destinationName = com["actuators"][i]["topic"];
         client.send(message);
     }
-    //message1 = new Paho.MQTT.Message("state");
-    //message1.destinationName = "luz1";
-    //message2 = new Paho.MQTT.Message("state");
-    //message2.destinationName = "luz2";
-
-    //client.send(message1);
-    //client.send(message2); 
 }
 
 function doFail(e){
@@ -387,7 +379,6 @@ console.log(e);
 // called when the client loses its connection
 function onConnectionLost(responseObject) {
 if (responseObject.errorCode !== 0) {
-    //Materialize.toast('Conexão perdida: ' + responseObject.errorMessage, 24000);
   console.log("onConnectionLost:"+responseObject.errorMessage);
 }
 }
@@ -439,13 +430,9 @@ function onMessageArrived(message) {
                 if (message.payloadString == "1") {
                     $("#element"+com["actuators"][i]["id"]).prop('checked', true);
                     $("#icon"+com["actuators"][i]["id"]).addClass('yellow');
-                    //Materialize.toast('Mensagem no ambiente ' + com["actuators"][i]["name"] + ' foi ligado(a) neste momento', 700);
-                    //addAction(idHouse, 'ligou o atuador <b>'+ jdata[i].name);
                 } else {
                     $("#element"+com["actuators"][i]["id"]).prop('checked', null);
                     $("#icon"+com["actuators"][i]["id"]).removeClass('yellow')
-                    //Materialize.toast('Mensagem no ambiente ' + com["actuators"][i]["name"] + ' foi desligado(a) neste momento', 700);
-                    //addAction(idHouse, 'desligou o atuador <b>'+ jdata[i].name);
                 }
                 
             } else{
