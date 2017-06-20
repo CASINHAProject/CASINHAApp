@@ -16,6 +16,8 @@
     <preference name="SplashScreenDelay" value="3000"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="FadeSplashScreen" value="true"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+
 
     <plugin name="cordova-plugin-console" source="npm" spec="~1.0.2" />
     <plugin name="cordova-plugin-device" source="npm" spec="~1.1.1" />
@@ -34,6 +36,10 @@
     <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1" />
     <splash density="port-ldpi" src="www/res/screen/android/drawable-port-ldpi-screen.png" />
     <splash src="www/res/screen/splash.png" />
+
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.Notification" />
+    </feature>
 
     <platform name="android">
         <preference name="StatusBarBackgroundColor" value="#211717"/>

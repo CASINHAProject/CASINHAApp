@@ -404,9 +404,11 @@ function onMessageArrived(message) {
                     Materialize.toast('Mensagem no ambiente ' + com["actuators"][i]["name"] + ' foi desligado(a) neste momento', 700);
                     //addAction(idHouse, 'desligou o atuador <b>'+ jdata[i].name);
                 }
+                ring();
                 
             } else{
                 $("#element"+com["actuators"][i]["id"]).html(message.payloadString);
+                ring();
             }
         }
     }
@@ -417,7 +419,7 @@ function onMessageArrived(message) {
     }else{
         if(message.destinationName == "m"){
             Materialize.toast('Mensagem no ambiente:' +message.payloadString, 4004);
-            navigator.notification.beep(1);
+            ring();
         }
         
     }
@@ -495,4 +497,8 @@ function distLatLong(lat1,lon1,lat2,lon2) {
   var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   var d = R * c;
   return d;
+}
+
+function ring(){
+    navigator.notification.beep(1);
 }
