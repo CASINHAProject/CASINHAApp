@@ -211,7 +211,7 @@ function telaAtuadores(){
                          "<div id='state' class='modal'>"+
                             "<div class='modal-content'>"+
                                 "<h4 class='center-align'>"+com["name"]+"</h4>"+
-                                "<img class='responsive-img materialboxed' src='http://192.168.0.101:8000"+com["image"]+"'>"+
+                                "<img class='responsive-img materialboxed' src="+com["image"]+">"+
                                 "<p>Criador: "+ com["creator"]["username"] +"</p>"+
                                 "<p>Sensores/Atuadores: "+ com["actuators"].length +"</p>"+
                                 "<p>Chave: "+ com["hash_key"] +"</p>"+
