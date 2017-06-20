@@ -329,6 +329,7 @@ numbrand = Math.floor(Math.random() * 500) + 1;
 
 
 function initConnection(){
+    Materialize.toast('Tentando conexão...', 2000);
     client = new Paho.MQTT.Client(com["server"], parseInt(com["portws"]), "kfm"+numbrand);
     client.onConnectionLost = onConnectionLost;
     client.onMessageArrived = onMessageArrived;
