@@ -275,13 +275,16 @@ function listAc(){
                 l += "<input id='element"+com["actuators"][i]["id"]+"' onclick='alterCheck(\""+com["actuators"][i]["id"]+"\",\""+com["actuators"][i]["topic"]+"\");' type='checkbox'>";
                 l += "<span class='lever'></span>";
                 l += "</label>";
+                
                 l += "</div>"; 
+                l += "<div id='new"+com["actuators"][i]["id"]+"' class='col s4 offset-s3'>"; 
+                l += "<div>"
         }else if(com["actuators"][i]["actuator_type"] == 2){
-            l += "<p><b>Valor:</b><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b>Km</b></p>";
+            l += "<p><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b>Km</b></p>";
         }else if(com["actuators"][i]["actuator_type"] == 3){
-            l += "<p><b>Valor:</b><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b>ºC</b></p>";
+            l += "<p><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b>ºC</b></p>";
         }else{
-            l += "<p><b>Valor:</b><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b></b></p>";
+            l += "<p><span id='element"+com["actuators"][i]["id"]+"'>...</span> <b></b></p>";
         }
 
         l+= "</div>";
@@ -303,6 +306,7 @@ function alterCheck(numAc, topicAc) {
     }else{
         m = new Paho.MQTT.Message('off');
     }
+    $("#new"+numAc).html("<a href='#!' onclick='reup(\""+topicAc+"\",\""+bool+"\");'><i class='material-icons small center-align'>replay</i></a>")
 
     console.log(m);
     m.destinationName = topicAc;
@@ -310,6 +314,17 @@ function alterCheck(numAc, topicAc) {
     Materialize.toast('Mensagem publicada no ambiente. Aguarde a confirmação...', 540);
     $('#element'+numAc).prop('disabled', 'true');
     
+}
+
+function reup(topicAc, bool){
+    if(bool == true){
+        m = new Paho.MQTT.Message('on');
+    }else{
+        m = new Paho.MQTT.Message('off');
+    }
+    m.destinationName = topicAc;
+    client.send(m);
+    Materialize.toast('Mensagem reenviada...', 540);
 }
 
 function sair(){
@@ -400,7 +415,7 @@ function onMessageArrived(message) {
                     //addAction(idHouse, 'ligou o atuador <b>'+ jdata[i].name);
                 } else {
                     $("#element"+com["actuators"][i]["id"]).prop('checked', null);
-                    $("#icon"+com["actuators"][i]["id"]).removeClass('yellow')
+                    $("#icon"+com["actuators"][i]["id"]).removeClass('yellow');
                     Materialize.toast('Mensagem no ambiente ' + com["actuators"][i]["name"] + ' foi desligado(a) neste momento', 700);
                     //addAction(idHouse, 'desligou o atuador <b>'+ jdata[i].name);
                 }
@@ -408,6 +423,7 @@ function onMessageArrived(message) {
                 
             } else{
                 $("#element"+com["actuators"][i]["id"]).html(message.payloadString);
+
                 ring();
             }
         }
@@ -440,6 +456,7 @@ function onMessageArrived(message) {
                 
             } else{
                 $("#element"+com["actuators"][i]["id"]).html(message.payloadString);
+                $("#icon"+com["actuators"][i]["id"]).addClass('yellow');
             }
         }
     }
